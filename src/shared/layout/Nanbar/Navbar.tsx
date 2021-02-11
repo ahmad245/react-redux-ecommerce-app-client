@@ -84,6 +84,7 @@ function Navbar() {
                <DropdownItem> Settings </DropdownItem>
                <DropdownItem>Animals </DropdownItem>
                <DropdownItem path="/user/history">History </DropdownItem>
+               <DropdownItem path="/admin/history"> admin History </DropdownItem>
                <DropdownItem path="/logout" >Logout </DropdownItem>
             
               </DropdownMenu>

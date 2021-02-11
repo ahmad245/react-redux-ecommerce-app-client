@@ -18,6 +18,7 @@ import { useActions } from './hooks/useActions';
 import AdminRoute from './shared/RedirectToRoute/AdminRoute';
 import { Dashboard } from './component/Admin/pages';
 import { CategoryCreate, CategoryDelete, CategoryList, CategoryUpdate } from './component/Category/pages';
+import { AdminHistory } from './component/Admin/pages/History';
 
 function App() {
   const {authChange} =useActions();
@@ -37,13 +38,18 @@ function App() {
       <Route path="/login" exact component={Login} />
       <Route path="/logout" exact component={Logout} />
       <Route path="/forgotPassword" exact component={ForgotPassord} />
+   
       <AuthRoute path="/user/history" exact component={History} />
+     
+      
+      <AdminRoute path="/admin/history" exact component={AdminHistory} />
+     
       <AdminRoute path="/admin/dashboard" exact component={Dashboard} />
-
       <AdminRoute path="/admin/dashboard/categories" exact component={CategoryList} />
       <AdminRoute path="/admin/dashboard/create" exact component={CategoryCreate} />
       <AdminRoute path="/admin/dashboard/update/:slug" exact component={CategoryUpdate} />
       <AdminRoute path="/admin/dashboard/delete/:slug" exact component={CategoryDelete} />
+
       </Switch>
      </BrowserRouter>
     
