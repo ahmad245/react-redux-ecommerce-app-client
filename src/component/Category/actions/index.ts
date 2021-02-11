@@ -12,7 +12,7 @@ export interface CategoryRepositoryAction{
 
 export interface CategoryRepositoryGetAll{
     type:ActionCategoryType.CATEGORY_REPOSITORY_GETALL;
-    payload:Categories
+    payload:any
 }
 export interface CategoryRepositoryGetById{
     type:ActionCategoryType.CATEGORY_REPOSITORY_GETBYID;

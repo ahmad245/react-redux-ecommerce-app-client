@@ -10,16 +10,23 @@ const CategoryList = () => {
 
     const { getAllCategory } = useActionsCategory();
     const { categoryReducer } = useTypedSelector(state => state)
-
+    const [data, setData] = useState<any>([]);
     useEffect(() => {
-        getAllCategory();
-        if (!categoryReducer.data) setData([]);
-        else{
-            let categoryList = Object.values(categoryReducer.data)
-            if(categoryList != undefined){
-                setData(categoryList);
+        const fetch=async()=>{
+            console.log('hi');
+            
+            await getAllCategory();
+            if (!categoryReducer.data) setData([]);
+            else{
+                let categoryList = Object.values(categoryReducer.data)
+                if(categoryList != undefined){
+                    setData(categoryList);
+                }
             }
         }
+        fetch()
+        
+       
         
     }, []);
 
@@ -33,6 +40,7 @@ const CategoryList = () => {
     }
 
     const renderList = () => {
+        console.log('list component ' );
         if (!categoryReducer.data) return <div>loading</div>
         let categoryList = Object.values(categoryReducer.data)
         return categoryList.map((category) => {
@@ -50,6 +58,8 @@ const CategoryList = () => {
     }
   // search
     const renderListFromFuseJs=()=>{
+        console.log('state',data);
+        
         return (
             <div className="Container">
         {data.map((item:any) => (
@@ -58,11 +68,6 @@ const CategoryList = () => {
       </div>
         )
     }
-
-
-  
-
-    const [data, setData] = useState<any>([]);
     const searchData = (pattern: string) => {
         if (!pattern) {
           
@@ -89,10 +94,11 @@ const CategoryList = () => {
             <SearchBar
                 placeholder="Search"
                 
-                onChange={ searchData}
+                onChange={ ()=>console.log('hh')
+                }
             />
-            {renderList}
-            {renderListFromFuseJs}
+            {/* {renderList()} */}
+            {renderListFromFuseJs()}
         </div>
     );
 

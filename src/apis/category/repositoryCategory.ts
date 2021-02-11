@@ -31,7 +31,9 @@ export const update=async(category:string,slug:string,authtoken:string)=>{
 }
 
 export const create=async(category:string,authtoken:string)=>{
- return  await  axios.post(`${process.env.REACT_APP_API}/category`,category,{
+    console.log(category,'gggg');
+    
+ return  await  axios.post(`${process.env.REACT_APP_API}/category`,{name:category},{
     headers:{
      authtoken
     }
