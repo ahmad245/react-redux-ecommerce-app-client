@@ -10,8 +10,12 @@ const CategoryDelete=(props:any)=>{
     const {removeCategory,getCategoryBySlug} =useActionsCategory();
     const { categoryReducer,authReducer } = useTypedSelector(state => state)
     useEffect(()=>{
-        getCategoryBySlug(props.match.params.slug)
+
+       // getCategoryBySlug(props.match.params.slug)
+        getCategoryBySlug(props.slug)
     },[])
+
+
     
     const  renderActions=()=>{
         const { slug } = props.match.params;
@@ -30,12 +34,14 @@ const CategoryDelete=(props:any)=>{
         );
     }
   const renderContent=() =>{
-        if (!categoryReducer.data[props.match.params.slug]) {
+    if (!categoryReducer.data[props.slug]) {
+    //    if (!categoryReducer.data[props.match.params.slug]) {
           return 'Are you sure you want to delete this stream?';
         }
     
         return `Are you sure you want to delete the stream with title: ${
-            categoryReducer.data[props.match.params.slug].name
+      //    categoryReducer.data[props.match.params.slug].name
+          categoryReducer.data[props.slug].name
         }`;
       }
     return (

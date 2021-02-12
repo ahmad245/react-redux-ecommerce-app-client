@@ -1,0 +1,11 @@
+import { SubCategoryRepositoryAction, SubCategoryRepositoryCreateAction, SubCategoryRepositoryDeleteAction, SubCategoryRepositoryErrorAction, SubCategoryRepositoryGetAllAction, SubCategoryRepositoryGetByIdAction, SubCategoryRepositoryUpdateAction } from "../actions";
+
+export type ActionSubCategory=
+|SubCategoryRepositoryAction
+|SubCategoryRepositoryCreateAction
+|SubCategoryRepositoryUpdateAction
+|SubCategoryRepositoryDeleteAction
+|SubCategoryRepositoryGetAllAction
+|SubCategoryRepositoryGetByIdAction
+|SubCategoryRepositoryErrorAction
+

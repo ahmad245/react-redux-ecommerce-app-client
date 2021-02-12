@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { toast } from 'react-toastify';
+import { CategoryList } from '..';
 import { useActions, useActionsCategory, useTypedSelector } from '../../../../hooks';
 import { CategoryForm } from '../CategoryForm';
 
@@ -16,6 +17,7 @@ const CategoryCreate = () => {
     return (
         <div>
             <CategoryForm onSubmit={onSubmit} />
+            <CategoryList />
         </div>
     );
 

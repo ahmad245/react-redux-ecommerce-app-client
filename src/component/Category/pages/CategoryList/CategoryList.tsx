@@ -4,46 +4,39 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useActions, useTypedSelector, useActionsCategory } from '../../../../hooks';
 import { SearchBar } from '../../../../shared/SearchBar';
-import Fuse from "fuse.js";
+import CategoryDelete from '../CategoryDelete/CategoryDelete';
+
 const CategoryList = () => {
 
 
     const { getAllCategory } = useActionsCategory();
     const { categoryReducer } = useTypedSelector(state => state)
-    const [data, setData] = useState<any>([]);
+    const [term, setTerm] = useState('');
     useEffect(() => {
-        const fetch=async()=>{
-            console.log('hi');
-            
-            await getAllCategory();
-            if (!categoryReducer.data) setData([]);
-            else{
-                let categoryList = Object.values(categoryReducer.data)
-                if(categoryList != undefined){
-                    setData(categoryList);
-                }
-            }
-        }
-        fetch()
-        
-       
-        
+             getAllCategory();
     }, []);
+
+    const openDeletModal=(slug:string='')=>{
+          return <CategoryDelete slug={slug} />
+    }
 
     const renderBtn = (category: { name: string, _id: string, slug?: string }) => {
         return (
             <div className="right floated content">
-                <Link to={`/admin/dashboard/update/${category.slug}`} className="ui button primary">Edit</Link>
-                <Link to={`/admin/dashboard/delete/${category.slug}`} className="ui button negative">Delete</Link>
+                <Link to={`/admin/dashboard/category/update/${category.slug}`} className="ui button primary">Edit</Link>
+                <Link to={`/admin/dashboard/category/delete/${category.slug}`} className="ui button negative">Delete</Link>
+                {/* either link or button */}
+                <button onClick={ ()=> openDeletModal(category.slug)} >Delete</button>
             </div>
         )
     }
 
-    const renderList = () => {
+    const renderList = (term:string='') => {
         console.log('list component ' );
         if (!categoryReducer.data) return <div>loading</div>
-        let categoryList = Object.values(categoryReducer.data)
-        return categoryList.map((category) => {
+        let categoryList = Object.values(categoryReducer.data);
+        let list=filterResult(term,categoryList,'name')
+        return list.map((category) => {
             return (
                 <div className="item" key={category._id}>
                     <i className="large middle aligned icon camera" />
@@ -57,48 +50,23 @@ const CategoryList = () => {
         })
     }
   // search
-    const renderListFromFuseJs=()=>{
-        console.log('state',data);
-        
-        return (
-            <div className="Container">
-        {data.map((item:any) => (
-          <p {...item} key={item.name} />
-        ))}
-      </div>
-        )
-    }
-    const searchData = (pattern: string) => {
-        if (!pattern) {
-          
-            return;
-        }
-        const fuse = new Fuse(Object.values(categoryReducer.data), {
-            keys: ["name"],
-        });
-        const result = fuse.search(pattern);
-        const matches:any = [];
-        if (!result.length) {
-            setData([]);
-        } else {
-            result.forEach(({ item }) => {
-                matches.push(item);
-            });
-            setData(matches);
-        }
-    }
+  const filterResult=(term:string='',list:any[],field:string)=>{
+      return list.filter((el)=>el[field].toLocaleLowerCase().includes(term))
+  }
+
+
 
     // end serach
     return (
+        
         <div>
             <SearchBar
                 placeholder="Search"
                 
-                onChange={ ()=>console.log('hh')
-                }
+                onChange={setTerm}
             />
-            {/* {renderList()} */}
-            {renderListFromFuseJs()}
+            {renderList(term)}
+  
         </div>
     );
 

@@ -46,9 +46,9 @@ function App() {
      
       <AdminRoute path="/admin/dashboard" exact component={Dashboard} />
       <AdminRoute path="/admin/dashboard/categories" exact component={CategoryList} />
-      <AdminRoute path="/admin/dashboard/create" exact component={CategoryCreate} />
-      <AdminRoute path="/admin/dashboard/update/:slug" exact component={CategoryUpdate} />
-      <AdminRoute path="/admin/dashboard/delete/:slug" exact component={CategoryDelete} />
+      <AdminRoute path="/admin/dashboard/category/create" exact component={CategoryCreate} />
+      <AdminRoute path="/admin/dashboard/category/update/:slug" exact component={CategoryUpdate} />
+      <AdminRoute path="/admin/dashboard/category/delete/:slug" exact component={CategoryDelete} />
 
       </Switch>
      </BrowserRouter>
