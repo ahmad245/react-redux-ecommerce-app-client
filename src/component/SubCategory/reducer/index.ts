@@ -1,1 +1,1 @@
-export {default as subCategiryReducer } from './subCategiryReducer';
+export {default as subCategoryReducer } from './subCategiryReducer';
