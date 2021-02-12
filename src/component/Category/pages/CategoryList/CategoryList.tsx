@@ -13,8 +13,6 @@ const CategoryList = () => {
     const [data, setData] = useState<any>([]);
     useEffect(() => {
         const fetch=async()=>{
-            console.log('hi');
-            
             await getAllCategory();
             if (!categoryReducer.data) setData([]);
             else{
