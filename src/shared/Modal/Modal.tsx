@@ -1,18 +1,20 @@
 import React from "react";
 import ReactDom from "react-dom";
+import { Dimmer, Header, Standard ,Content,Actions} from ".";
+
 
 const Modal = (props:any) => {
     let doc=document.getElementById("modal")!
     // if(!doc) return <div></div>
     // if(doc){
         return ReactDom.createPortal(
-            <div onClick={props.onDismiss} className="ui dimmer modals  visible active">
-              <div onClick={(e)=>e.stopPropagation()} className="ui standard modal visible active">
-                <div className="header">{props.title}</div>
-                <div className="content">{props.content}</div>
-                <div className="actions">{props.actions}</div>
-              </div>
-            </div>,
+            <Dimmer onClick={props.onDismiss} className="ui dimmer modals  visible active">
+              <Standard onClick={(e)=>e.stopPropagation()} className="ui standard modal visible active">
+                <Header className="header">{props.title}</Header>
+                <Content className="content">{props.content}</Content>
+                <Actions className="actions">{props.actions}</Actions>
+              </Standard>
+            </Dimmer>,
            doc 
           );
    // }

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { bindActionCreators } from "redux";
-import {actionCreators,actionCreatorsCategory} from '../state';
+import {actionCreators,actionCreatorsCategory,actionCreatorsSubCategory} from '../state';
 
 
 export const useActions=()=>{
@@ -13,4 +13,10 @@ export const useActionsCategory=()=>{
   const dispatch = useDispatch();
 
   return bindActionCreators(actionCreatorsCategory,dispatch);
+}
+
+export const useActionsSubCategory=()=>{
+  const dispatch = useDispatch();
+
+  return bindActionCreators(actionCreatorsSubCategory,dispatch);
 }

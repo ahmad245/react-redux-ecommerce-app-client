@@ -11,7 +11,7 @@ const SidebarAdmin=()=>{
         
           <StyledMenu>
 
-          <Link to="/">
+          <Link to="/admin/dashboard/categories">
         <span role="img" aria-label="about us">&#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;</span>
        Categories
       </Link>
