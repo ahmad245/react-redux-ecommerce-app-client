@@ -6,6 +6,11 @@ export interface Category{
 export interface Categories{
     category:Category[];
 }
+
+export interface CategoryProduct{
+    category:Category;
+    ptoduct:any[]
+}
 export interface CategoryRepositoryAction{
     type:ActionCategoryType.CATEGORY_REPOSITORY
 }
@@ -16,7 +21,7 @@ export interface CategoryRepositoryGetAll{
 }
 export interface CategoryRepositoryGetById{
     type:ActionCategoryType.CATEGORY_REPOSITORY_GETBYID;
-    payload:Category
+    payload:CategoryProduct
 }
 export interface CategoryRepositoryCreate{
     type:ActionCategoryType.CATEGORY_REPOSITORY_CREATE;

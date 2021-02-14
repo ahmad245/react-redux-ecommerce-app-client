@@ -137,6 +137,7 @@ background: #f9fafb;
 `;
 
 export const Standard=styled.div`
+
 &.modal{
     position: absolute;
     display: none;
@@ -157,6 +158,28 @@ export const Standard=styled.div`
     -ms-user-select: text;
     user-select: text;
     will-change: top,left,margin,transform,opacity;
+}
+&.active{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    opacity: 1;
+}
+&.visible{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    opacity: 1;
+}
+&.transition{
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
 }
 &.transition {
     -webkit-animation-iteration-count: 1;

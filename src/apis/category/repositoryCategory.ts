@@ -15,15 +15,15 @@ export const getBySlug=async(slug:string)=>{
 
 
 export const remove=async(slug:string , authtoken:string)=>{
-  return await axios.delete(`${process.env.REACT_APP_API}/category/${{slug}}`,{
+  return await axios.delete(`${process.env.REACT_APP_API}/category/${slug}`,{
        headers:{
            authtoken
        }
    })
 }
 
-export const update=async(category:string,slug:string,authtoken:string)=>{
-  return  await  axios.put(`${process.env.REACT_APP_API}/category/${{slug}}`,category,{
+export const update=async(category:Category,slug:string,authtoken:string)=>{
+  return  await  axios.put(`${process.env.REACT_APP_API}/category/${slug}`,category,{
         headers:{
             authtoken
         }
@@ -31,7 +31,6 @@ export const update=async(category:string,slug:string,authtoken:string)=>{
 }
 
 export const create=async(category:string,authtoken:string)=>{
-    console.log(category,'gggg');
     
  return  await  axios.post(`${process.env.REACT_APP_API}/category`,{name:category},{
     headers:{
@@ -39,3 +38,8 @@ export const create=async(category:string,authtoken:string)=>{
     }
  })
 }
+
+ export const getAllBySubCategory=async(id:string)=>{
+     return await axios.get(`${process.env.REACT_APP_API}/category/subs/${id}`)
+
+ }

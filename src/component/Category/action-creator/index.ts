@@ -18,7 +18,7 @@ export const createCategory=(name:string,token:string)=>async(dispatch:Dispatch<
 export const updateCategory=(name:string,slug:string,token:string)=>async(dispatch:Dispatch<ActionCategory>)=>{
     dispatch({type:ActionCategoryType.CATEGORY_REPOSITORY})
     try {
-        const {data}=await update(name,slug,token)
+        const {data}=await update({name},slug,token)
         dispatch({type:ActionCategoryType.CATEGORY_REPOSITORY_UPDATE,payload:data})
     } catch (error) {
         dispatch({type:ActionCategoryType.CATEGORY_REPOSITORY_ERROR,payload:error.message})

@@ -14,6 +14,7 @@ const SearchBar = ({onChange, placeholder}:any) => {
           placeholder={placeholder}
         />
       </Search>
+      
     );
   };
 

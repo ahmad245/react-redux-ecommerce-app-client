@@ -17,7 +17,7 @@ export const getBySlug=async(slug:string)=>{
 
 
 export const remove=async(slug:string , authtoken:string)=>{
-  return await axios.delete(`${process.env.REACT_APP_API}/sub/${{slug}}`,{
+  return await axios.delete(`${process.env.REACT_APP_API}/sub/${slug}`,{
        headers:{
            authtoken
        }
@@ -25,7 +25,7 @@ export const remove=async(slug:string , authtoken:string)=>{
 }
 
 export const update=async(sub:SubCategory,slug:string,authtoken:string)=>{
-  return  await  axios.put(`${process.env.REACT_APP_API}/sub/${{name:sub.name,parent:sub.parent}}`,sub,{
+  return  await  axios.put(`${process.env.REACT_APP_API}/sub/${slug}`,sub,{
         headers:{
             authtoken
         }

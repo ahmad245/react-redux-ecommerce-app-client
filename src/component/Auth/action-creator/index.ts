@@ -28,7 +28,8 @@ export const logout=()=>async(dispatch:Dispatch<ActionAuth>)=>{
 }
 
 export const login=(email:string,password:string)=>async(dispatch:Dispatch<ActionAuth>)=>{
-   dispatch({type:ActionAutType.LOGIN_REPOSITORY})
+    
+    dispatch({type:ActionAutType.LOGIN_REPOSITORY})
     try {
         const userLogin=await  loginRepository({email,password});
         await populate(userLogin,dispatch);
@@ -66,6 +67,8 @@ export const  register=(email:string,password:string)=>async(dispatch:Dispatch<A
 
 
 const populate=async(userLogin:firebase.default.User | null,dispatch:Dispatch<ActionAuth>):Promise<void>=>{
+    console.log('populate');
+    
     if(userLogin && userLogin.email) {
         const {token}=await userLogin.getIdTokenResult();
         const user=await createUser(token);

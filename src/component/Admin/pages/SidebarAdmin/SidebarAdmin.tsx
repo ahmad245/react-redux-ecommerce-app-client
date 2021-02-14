@@ -11,11 +11,15 @@ const SidebarAdmin=()=>{
         
           <StyledMenu>
 
-          <Link to="/admin/dashboard/categories">
+          <Link to="/admin/dashboard/category/create">
         <span role="img" aria-label="about us">&#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;</span>
        Categories
       </Link>
-      <Link to="/">
+      <Link to="/admin/dashboard/subCategory/create">
+        <span role="img" aria-label="about us">&#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;</span>
+       Sub Categories
+      </Link>
+      <Link to="/admin/dashboard/product/create">
         <span role="img" aria-label="price">&#x1f4b8;</span>
         Products
         </Link>

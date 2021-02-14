@@ -23,10 +23,10 @@ export default (state:RepositoryState=INITIALSTATAUTH,action:ActionSubCategory):
 
 
      case ActionSubCategoryType.SUBCATEGORY_REPOSITORY_CREATE:
-         return {...state,loading:false,data: {[action.payload._id]:action.payload}}
+         return {...state,loading:false,data: { ...state.data, [action.payload._id]:action.payload}}
          
      case ActionSubCategoryType.SUBCATEGORY_REPOSITORY_UPDATE:
-         return {...state,loading:false,data: {[action.payload._id]:action.payload}}
+         return {...state,loading:false,data: {...state.data, [action.payload._id]:action.payload}}
 
      case ActionSubCategoryType.SUBCATEGORY_REPOSITORY_DELETE:
         return  {loading:false, data: _.omit(state.data,[action.payload._id])}     
@@ -36,7 +36,8 @@ export default (state:RepositoryState=INITIALSTATAUTH,action:ActionSubCategory):
         return {...state,loading:false, data: {..._.mapKeys(action.payload,'_id')}} 
     
     case ActionSubCategoryType.SUBCATEGORY_REPOSITORY_GETBYID:
-        return {...state,loading:false ,data: {[action.payload._id]:action.payload}}    
+  
+        return {...state,loading:false ,data: {...state.data,[action.payload.sub._id]:action.payload.sub}}    
     
 
     case ActionSubCategoryType.SUBCATEGORY_REPOSITORY_ERROR :

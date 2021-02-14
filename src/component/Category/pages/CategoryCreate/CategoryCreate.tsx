@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 
 import { toast } from 'react-toastify';
 import { CategoryList } from '..';
@@ -14,6 +14,8 @@ const CategoryCreate = () => {
 
         createCategory(formValue, authReducer.token)
     }
+  
+    
     return (
         <div>
             <CategoryForm onSubmit={onSubmit} />
@@ -23,4 +25,4 @@ const CategoryCreate = () => {
 
 }
 
-export default CategoryCreate;
+export default memo(CategoryCreate);

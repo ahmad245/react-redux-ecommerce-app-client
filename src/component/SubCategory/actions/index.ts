@@ -6,6 +6,11 @@ export interface SubCategory{
     slug?:string;
     parent:string;
 }
+
+export interface SubCategoryProduct{
+    sub:SubCategory;
+    ptoduct:any[]
+}
 export interface SubCategoryRepositoryAction{
     type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY
 }
@@ -28,7 +33,7 @@ export interface SubCategoryRepositoryGetAllAction{
 }
 export interface SubCategoryRepositoryGetByIdAction{
     type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY_GETBYID;
-    payload:SubCategory;
+    payload:SubCategoryProduct;
 }
 
 export interface SubCategoryRepositoryErrorAction{

@@ -1,10 +1,10 @@
 
 import { Dispatch } from "redux";
 import { ActionSubCategory } from "../action-types";
-import { ActionSubCategoryType,SubCategory } from "../actions";
-import { create,update,getAll,getBySlug,remove } from "../../../apis/subCategory";
+import { ActionSubCategoryType } from "../actions";
+import { create,update,getAll,getBySlug,remove, SubCategory } from "../../../apis/subCategory";
 
-export const createCategory=(sub:SubCategory,token:string)=>async(dispatch:Dispatch<ActionSubCategory>)=>{
+export const createSubCategory=(sub:SubCategory,token:string)=>async(dispatch:Dispatch<ActionSubCategory>)=>{
 
     dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY})
 
@@ -16,7 +16,7 @@ export const createCategory=(sub:SubCategory,token:string)=>async(dispatch:Dispa
     }
 }
 
-export const updateCategory=(sub:SubCategory,slug:string,token:string)=>async(dispatch:Dispatch<ActionSubCategory>)=>{
+export const updateSubCategory=(sub:SubCategory,slug:string,token:string)=>async(dispatch:Dispatch<ActionSubCategory>)=>{
     dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY})
     try {
         const {data}=await update(sub,slug,token)
@@ -27,7 +27,7 @@ export const updateCategory=(sub:SubCategory,slug:string,token:string)=>async(di
     }
 }
 
-export const removeCategory=(slug:string,token:string)=>async(dispatch:Dispatch<ActionSubCategory>)=>{
+export const removeSubCategory=(slug:string,token:string)=>async(dispatch:Dispatch<ActionSubCategory>)=>{
     dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY})
     try {
         const {data}=await remove(slug,token)
@@ -38,7 +38,7 @@ export const removeCategory=(slug:string,token:string)=>async(dispatch:Dispatch<
     }
 }
 
-export const getAllCategory=()=>async(dispatch:Dispatch<ActionSubCategory>)=>{
+export const getAllSubCategory=()=>async(dispatch:Dispatch<ActionSubCategory>)=>{
     dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY});
     try {
         const {data}=await getAll()
@@ -48,7 +48,7 @@ export const getAllCategory=()=>async(dispatch:Dispatch<ActionSubCategory>)=>{
   
     }
 }
-export const getCategoryBySlug=(slug:string)=>async(dispatch:Dispatch<ActionSubCategory>)=>{
+export const getSubCategoryBySlug=(slug:string)=>async(dispatch:Dispatch<ActionSubCategory>)=>{
     dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY});
     try {
         const {data}=await getBySlug(slug)

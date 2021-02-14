@@ -57,6 +57,8 @@ export const createUser=async(authtoken:string)=>{
            authtoken
           }
       });
+      console.log('api',user);
+      
       return user;
 }
 

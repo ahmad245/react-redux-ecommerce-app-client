@@ -27,7 +27,7 @@ const DropdownMenu=({children,leftIcon,rightIcon,top}:DropdownProps)=>{
    
 
     const onClickDom=(e:any)=>{ 
-      if(dropdownRef && dropdownRef.current.contains(e.target)) return;
+      if(dropdownRef && dropdownRef.current && dropdownRef.current.contains(e.target)) return;
           setOpen(false);
         }
         

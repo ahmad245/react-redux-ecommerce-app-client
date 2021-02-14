@@ -23,20 +23,23 @@ export default (state:RepositoryState=INITIALSTATAUTH,action:ActionCategory):Rep
 
 
      case ActionCategoryType.CATEGORY_REPOSITORY_CREATE:
-         return {...state,loading:false,data: {[action.payload._id]:action.payload}}
+         return {...state,loading:false,data: {...state.data,[action.payload._id]:action.payload}}
          
      case ActionCategoryType.CATEGORY_REPOSITORY_UPDATE:
-         return {...state,loading:false,data: {[action.payload._id]:action.payload}}
+         return {...state,loading:false,data: {...state.data,[action.payload._id]:action.payload}}
 
      case ActionCategoryType.CATEGORY_REPOSITORY_DELETE:
         return  {loading:false, data: _.omit(state.data,[action.payload._id])}     
     
     case ActionCategoryType.CATEGORY_REPOSITORY_GETALL:
         
+        
         return {...state,loading:false, data: {..._.mapKeys(action.payload,'_id')}} 
     
     case ActionCategoryType.CATEGORY_REPOSITORY_GETBYID:
-        return {...state,loading:false ,data: {[action.payload._id]:action.payload}}    
+        
+        
+        return {...state,loading:false ,data: {...state.data,[action.payload.category._id]:action.payload.category}}    
     
 
     case ActionCategoryType.CATEGORY_REPOSITORY_ERROR :
