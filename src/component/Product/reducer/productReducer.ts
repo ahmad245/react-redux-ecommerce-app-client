@@ -1,16 +1,18 @@
 import { ActionProduct } from "../action-types"
-import { ActionTypeProduct } from "../actions";
+import { ActionTypeProduct, BRANDS, COLOR, SHIPPING } from "../actions";
 import _ from 'lodash';
-enum SHIPPING{
-    Yes,
-    No
-}
-enum COLOR{
-    Black, Brown, Silver, White, Blue 
-}
-enum BRANDS{
-    Apple, Samsung, Microsoft, Lenovo, ASUS
-}
+import { SubCategory } from "../../SubCategory/actions";
+import { Category } from "../../Category/actions";
+// enum SHIPPING{
+//     Yes,
+//     No
+// }
+// enum COLOR{
+//     Black, Brown, Silver, White, Blue 
+// }
+// enum BRANDS{
+//     Apple, Samsung, Microsoft, Lenovo, ASUS
+// }
 export interface RepositoryState {
     loading: boolean;
     data:
@@ -20,8 +22,8 @@ export interface RepositoryState {
             title: string;
             description: string;
             price: number;
-            category: string;
-            subs: string[];
+            category: Category;
+            subs: SubCategory[] ;
             shipping: SHIPPING;
             quantity?: number;
             images?: any[];
@@ -40,9 +42,15 @@ const INITIALSTATE:RepositoryState={
             title: '',
             description: '',
             price: 0,
-            category: '',
-            subs: [''],
+            category: {_id:'',name:'',slug:''},
+            subs: [{_id:'',name:'',parent:'',slug:''}],
             shipping: SHIPPING.No,
+            color:COLOR.Black,
+            brand:BRANDS.ASUS,
+            quantity:0,
+            images:[],
+        
+            
             
         }
     },
@@ -66,7 +74,7 @@ export default  (state=INITIALSTATE,action:ActionProduct):RepositoryState=>{
             return {...state,loading:false,data:{..._.mapKeys(action.payload,'_id')}}
         
         case ActionTypeProduct.PRODUCT_REPOSITORY_GETBYID:
-        
+            return {...state,loading:false,data:{...state.data,[action.payload._id]:action.payload}}
         case ActionTypeProduct.PRODUCT_REPOSITORY_DELETE:
             return {...state,loading:false,data:_.omit(state.data,action.payload._id)}
         

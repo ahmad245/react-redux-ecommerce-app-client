@@ -1,12 +1,15 @@
-enum SHIPPING{
-    Yes,
-    No
+import { Category } from "../../Category/actions";
+import { SubCategory } from "../../SubCategory/actions";
+
+export enum SHIPPING{
+   Yes= 'Yes',
+    No='No'
 }
-enum COLOR{
-    Black, Brown, Silver, White, Blue 
+export enum COLOR{
+   Black = 'Black', Brown='Brown', Silver='Silver', White='White', Blue='Blue' 
 }
-enum BRANDS{
-    Apple, Samsung, Microsoft, Lenovo, ASUS
+export enum BRANDS{
+    Apple='Appple', Samsung='Samsung', Microsoft='Microsoft', Lenovo='Lenovo', ASUS='ASUS'
 }
 
 export interface Product{
@@ -24,29 +27,43 @@ export interface Product{
     slug:string;
 
 }
+export interface ProductCategorySubs{
+    _id:string;
+    title: string;
+    description: string;
+    price: number;
+    category: Category;
+    subs: SubCategory[];
+    shipping: SHIPPING;
+    quantity?: number;
+    images?:any [];
+    color?: COLOR;
+    brand?: BRANDS;
+    slug:string; 
+}
 
 export interface ProductRepositoryAction{
     type:ActionTypeProduct.PRODUCT_REPOSITORY
 }
 export interface ProductRepositroyCreateAction{
     type:ActionTypeProduct.PRODUCT_REPOSITORY_CREATE;
-    payload:Product;
+    payload:ProductCategorySubs;
 }
 export interface ProductRepositoryUpdateAction{
     type:ActionTypeProduct.PRODUCT_REPOSITORY_UPDATE;
-    payload:Product;
+    payload:ProductCategorySubs;
 }
 export interface ProductRepositoryDeleteAction{
     type:ActionTypeProduct.PRODUCT_REPOSITORY_DELETE;
-    payload:Product
+    payload:ProductCategorySubs
 }
 export interface ProductRepositoryGetAllAction{
     type:ActionTypeProduct.PRODUCT_REPOSITORY_GETALL;
-    payload:Product[]
+    payload:ProductCategorySubs[]
 }
 export interface ProductRepositoryGetByIdAction{
     type:ActionTypeProduct.PRODUCT_REPOSITORY_GETBYID;
-    payload:Product;
+    payload:ProductCategorySubs;
 }
 
 export interface ProductRepositoryErrorAction{

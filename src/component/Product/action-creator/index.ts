@@ -29,7 +29,7 @@ export const updateProduct=(product:IProduct,slug:string,token:string)=>async(di
     }
 }
 
-export const removeCategory=(slug:string,token:string)=>async(dispatch:Dispatch<ActionProduct>)=>{
+export const removeProduct=(slug:string,token:string)=>async(dispatch:Dispatch<ActionProduct>)=>{
     dispatch({type:ActionTypeProduct.PRODUCT_REPOSITORY})
     try {
         const {data}=await remove(slug,token)
@@ -40,7 +40,7 @@ export const removeCategory=(slug:string,token:string)=>async(dispatch:Dispatch<
     }
 }
 
-export const getAllCategory=()=>async(dispatch:Dispatch<ActionProduct>)=>{
+export const getAllProduct=()=>async(dispatch:Dispatch<ActionProduct>)=>{
     dispatch({type:ActionTypeProduct.PRODUCT_REPOSITORY});
     try {
         const {data}=await getAll()
@@ -50,7 +50,7 @@ export const getAllCategory=()=>async(dispatch:Dispatch<ActionProduct>)=>{
   
     }
 }
-export const getCategoryBySlug=(slug:string)=>async(dispatch:Dispatch<ActionProduct>)=>{
+export const getProductBySlug=(slug:string)=>async(dispatch:Dispatch<ActionProduct>)=>{
     dispatch({type:ActionTypeProduct.PRODUCT_REPOSITORY});
     try {
         const {data}=await getBySlug(slug)
