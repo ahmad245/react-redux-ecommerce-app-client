@@ -1,9 +1,8 @@
 
 import React, { useState, useEffect } from 'react'
-import { ProductCreateForm, ProductUpdateForm } from '../Forms'
-import { useActionsCategory, useTypedSelector, useActionsSubCategory, useActionsProduct } from '../../../../hooks';
+import {  ProductUpdateForm } from '../Forms'
+import { useActionsCategory, useTypedSelector, useActionsProduct } from '../../../../hooks';
 import { getAllBySubCategory } from '../../../../apis/category';
-import { IProduct } from '../../../../apis/product';
 import { BRANDS, COLOR, ProductCategorySubs, SHIPPING } from '../../actions';
 import { SubCategory } from '../../../SubCategory/actions';
 const INITIALSTATE: ProductCategorySubs = {
@@ -24,7 +23,7 @@ const ProductUpdate = (props: any) => {
     const [values, setValues] = useState<ProductCategorySubs>(INITIALSTATE);
     const [subOptions, setSubOptions] = useState([{}]);
     const [showSub, setShowSub] = useState(false);
-    const [loading, setLoading] = useState(false);
+   
 
     const { getAllCategory } = useActionsCategory();
     const { categoryReducer, authReducer, productReducer } = useTypedSelector(state => state);
@@ -40,7 +39,7 @@ const ProductUpdate = (props: any) => {
     }, [])
 
     const initailValue = () => {
-        const product = productReducer.data[props.match.params.slug]
+        const product = productReducer.data[props.match.params.id]
         if (product) {
 
             setValues({ ...values, ...product })

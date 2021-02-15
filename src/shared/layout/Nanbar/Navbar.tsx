@@ -11,15 +11,13 @@ import {
   MobileIcon,
   NavMenu,
   NavItem,
-  NavItemBtn,
+ 
   NavLinks,
-  NavBtnLink,
-  NavMenuLogo,
+
   SpaceBetwen
 } from './Navbar.element';
 import { DropdownMenu } from '../../DropdownMenu';
 import DropdownItem from '../../DropdownMenu/DropdownItem';
-import { useActions } from '../../../hooks/useActions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { useHistory } from 'react-router-dom';
 
@@ -28,8 +26,7 @@ function Navbar() {
   const [button, setButton] = useState(true);
   const [open, setOpen] = useState(false);
 
-  const {email,token,error,loading} = useTypedSelector((state) => state.authReducer)
-  const history=useHistory();
+  const {email} = useTypedSelector((state) => state.authReducer)
 
   const handleClick = () => {
     setClick(!click);
@@ -37,7 +34,6 @@ function Navbar() {
   }
   const closeMobileMenu = () => setClick(false);
 
-  const setOpenMenu=()=>setOpen(!open);
   const showButton = () => {
     if (window.innerWidth <= 960) {
       setButton(false);

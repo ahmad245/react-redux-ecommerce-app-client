@@ -1,11 +1,10 @@
 import React, { useState, useEffect, memo } from 'react';
 import { Link } from 'react-router-dom';
 
-import { toast } from 'react-toastify';
-import { useActions, useTypedSelector, useActionsCategory } from '../../../../hooks';
+//import { toast } from 'react-toastify';
+import {  useTypedSelector, useActionsCategory } from '../../../../hooks';
 import { SearchBar } from '../../../../shared/SearchBar';
 import CategoryDelete from '../CategoryDelete/CategoryDelete';
-import { useDispatch } from 'react-redux';
 
 const CategoryList = () => {
 
@@ -16,13 +15,9 @@ const CategoryList = () => {
     const [slug, setSlug] = useState('');
     useEffect(() => {
              getAllCategory();
-             console.log('slug');
-             
     }, []);
 
     const openDeletModal=(slug:string='')=>{
-        console.log('slug');
-        
         if(slug=='') return
           setSlug(slug)
     }

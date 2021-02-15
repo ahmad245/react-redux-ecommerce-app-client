@@ -4,14 +4,11 @@ import { Form, FormContainer } from '../../../shared/Form';
 import { Fieldset } from '../../../shared/Fields';
 import { Label } from '../../../shared/Label';
 import { ButtonValid } from '../../../shared/Buttons';
-import {auth} from '../../../firebase';
+//import {auth} from '../../../firebase';
 
 import {toast} from 'react-toastify';
 import { sendSignInLinkToEmail } from '..';
-
-
-
-export default (props:any) => {
+const Register= (props:any) => {
     
     const [email,setEmail]=useState('');
     const onSubmit=async(e:React.FormEvent<HTMLFormElement>)=>{
@@ -49,3 +46,4 @@ export default (props:any) => {
       
     )
 }
+export default Register;

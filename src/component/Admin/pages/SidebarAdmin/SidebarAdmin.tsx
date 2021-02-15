@@ -21,7 +21,11 @@ const SidebarAdmin=()=>{
       </Link>
       <Link to="/admin/dashboard/product/create">
         <span role="img" aria-label="price">&#x1f4b8;</span>
-        Products
+        Create Product
+        </Link>
+        <Link to="/admin/dashboard/product/List">
+        <span role="img" aria-label="price">&#x1f4b8;</span>
+        Products List
         </Link>
       <Link to="/">
         <span role="img" aria-label="contact">&#x1f4e9;</span>

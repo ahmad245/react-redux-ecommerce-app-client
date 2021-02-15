@@ -1,8 +1,8 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, {  memo } from 'react';
 
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import { CategoryList } from '..';
-import { useActions, useActionsCategory, useTypedSelector } from '../../../../hooks';
+import {  useActionsCategory, useTypedSelector } from '../../../../hooks';
 import { CategoryForm } from '../CategoryForm';
 
 

@@ -1,25 +1,15 @@
-import React, { useState,useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
 
-import { toast } from 'react-toastify';
+
+//import { toast } from 'react-toastify';
 import { useTypedSelector,useActionsCategory} from '../../../../hooks';
 import { Modal } from '../../../../shared/Modal';
 
 const CategoryDelete=(props:any)=>{
 
-    const {removeCategory,getCategoryBySlug} =useActionsCategory();
-    const { categoryReducer,authReducer } = useTypedSelector(state => state);
-    const history=useHistory();
-    useEffect(()=>{
-          console.log('delete');
-
-          return ()=>{
-           // props.setSlug('')
-          }
-          
-       // getCategoryBySlug(props.match.params.slug)
-      //  getCategoryBySlug(props.slug)
-    },[])
+    const {removeCategory} =useActionsCategory();
+    const { authReducer } = useTypedSelector(state => state);
+   
 
     const handleRemoveCategory=async(slug:string)=>{
     await  removeCategory(slug,authReducer.token)

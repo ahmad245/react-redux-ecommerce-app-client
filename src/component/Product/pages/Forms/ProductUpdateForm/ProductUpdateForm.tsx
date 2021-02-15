@@ -34,7 +34,7 @@ const ProductUpdateForm = ({
 
     }
     const subCategoryDefaultValues=()=>{
-        const options = [{}]
+        const options:any[] = []
         if (subs) {
             subs.forEach((el: any) => {
                 options.push({ value: el._id, label: el.name })
@@ -152,7 +152,7 @@ const ProductUpdateForm = ({
                 <div>
 
                     <Select
-                     defaultValue={...subCategoryDefaultValues()} 
+                     defaultValue={[...subCategoryDefaultValues()]} 
                      onChange={(value) => handleSubCategoryChange(value)}
                       options={getSubs()} 
                       isMulti

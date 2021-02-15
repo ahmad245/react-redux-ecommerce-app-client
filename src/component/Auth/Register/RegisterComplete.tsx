@@ -1,13 +1,10 @@
 import React, { useState,useEffect } from 'react'
-import { useHistory } from 'react-router-dom';
-import { auth } from '../../../firebase';
 import { toast } from 'react-toastify';
 import { FormContainer, Form } from '../../../shared/Form';
 import { Fieldset } from '../../../shared/Fields';
 import { Label } from '../../../shared/Label';
 import { Input } from '../../../shared/Input';
 import { ButtonValid } from '../../../shared/Buttons';
-import { signInWithEmailLink } from '..';
 import { useActions } from '../../../hooks/useActions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 

@@ -4,7 +4,7 @@ import { Fieldset } from '../../../shared/Fields';
 import { Label } from '../../../shared/Label';
 import { Input } from '../../../shared/Input';
 import { ButtonValid } from '../../../shared/Buttons';
-import { useActions } from '../../../hooks/useActions';
+
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { toast } from 'react-toastify';
 import { forgotPassword } from '..';
@@ -12,8 +12,8 @@ import { forgotPassword } from '..';
 const ForgotPassword=(props:any)=>{
     const [emailState,setEmailState]=useState('');
 
-    const {login} =useActions();
-    const {email,token,error,loading} = useTypedSelector((state) => state.authReducer)
+
+    const {email} = useTypedSelector((state) => state.authReducer)
 
     useEffect(() => {
          if(email || email !== ''){

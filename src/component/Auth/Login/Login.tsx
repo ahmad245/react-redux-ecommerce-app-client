@@ -5,7 +5,6 @@ import { Label } from '../../../shared/Label';
 import { Input } from '../../../shared/Input';
 import { ButtonValid } from '../../../shared/Buttons';
 import { useActions } from '../../../hooks/useActions';
-import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
@@ -13,8 +12,7 @@ const Login=()=>{
     const [emailState,setEmailState]=useState('');
     const [password,setPassword]=useState('');
     const {login} =useActions();
-    const {email,token,error,loading} = useTypedSelector((state) => state.authReducer)
-
+   // const {email,token,error,loading} = useTypedSelector((state) => state.authReducer)
     const onSubmit=async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
        

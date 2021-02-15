@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
-import { Router, BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import GlobalStyle from './shared/globalStyles/globalStyles';
 import Navbar from './shared/layout/Nanbar/Navbar';
-import {Input} from './shared/Input';
+
 import { Register } from './component/Auth/Register';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,7 +17,6 @@ import { History } from './component/User/pages/History';
 import { useActions } from './hooks/useActions';
 import AdminRoute from './shared/RedirectToRoute/AdminRoute';
 import { Dashboard } from './component/Admin/pages';
-import { CategoryCreate, CategoryDelete, CategoryList, CategoryUpdate } from './component/Category/pages';
 import { AdminHistory } from './component/Admin/pages/History';
 
 function App() {
