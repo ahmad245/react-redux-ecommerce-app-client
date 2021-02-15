@@ -19,12 +19,12 @@ import {
 import { DropdownMenu } from '../../DropdownMenu';
 import DropdownItem from '../../DropdownMenu/DropdownItem';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
-import { useHistory } from 'react-router-dom';
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
-  const [open, setOpen] = useState(false);
+  
 
   const {email} = useTypedSelector((state) => state.authReducer)
 

@@ -42,6 +42,8 @@ const ProductCreate=()=>{
     const [showSub, setShowSub] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    const [newImage,setNewImage]=useState('')
+
     const { getAllCategory } = useActionsCategory();
     const { categoryReducer ,authReducer} = useTypedSelector(state => state);
 
@@ -98,6 +100,8 @@ const ProductCreate=()=>{
             showSub={showSub}
             categoryList={Object.values(categoryReducer.data)}
             handleSubCategoryChange={handleSubCategoryChange}
+            newImage={newImage}
+            setNewImage={setNewImage}
           />
           </>
       )

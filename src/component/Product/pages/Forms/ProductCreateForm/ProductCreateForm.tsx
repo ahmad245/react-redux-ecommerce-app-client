@@ -1,7 +1,12 @@
 import React from 'react'
-import Select from 'react-select'
+import Select from 'react-select';
+import Resizer from 'react-image-file-resizer';
 const ProductCreateForm=({
-    handleSubCategoryChange,  categoryList,handleSubmit,handleChange,setValues,values,handleCatagoryChange,subOptions,showSub,}:any)=>{
+    handleSubCategoryChange,  categoryList,handleSubmit,handleChange,
+    setValues,values,handleCatagoryChange,subOptions,showSub,
+    setNewImage,
+    newImage
+  }:any)=>{
 
     const {
         title,
@@ -30,8 +35,39 @@ const ProductCreateForm=({
         return options;
 
       }
+      const fileChangedHandler=(event:any)=>{
+        var fileInput = false
+        if(event.target.files[0]) {
+            fileInput = true
+        }
+        if(fileInput) {
+            try {
+                Resizer.imageFileResizer(
+                event.target.files[0],
+                300,
+                300,
+                'JPEG',
+                100,
+                0,
+                uri => {
+                    console.log(uri)
+                    setNewImage( uri )
+                },
+                'base64',
+                200,
+                200,
+                );
+            }   catch(err) {
+                    console.log(err)
+            }
+        }
+      }
       return (
         <form onSubmit={handleSubmit}>
+
+                 <input type="file" onChange={fileChangedHandler}/>
+                <img src={newImage} alt=''/>
+
           <div className="form-group">
             <label>Title</label>
             <input
