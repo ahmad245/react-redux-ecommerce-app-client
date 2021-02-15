@@ -20,12 +20,12 @@ const ProductUpdateForm = ({
 
         useEffect(()=>{
             initailValue()
-        })
+        },[])
 
     const getSubs = () => {
-        const options = [{}]
-        if (subOptions) {
-            subOptions.forEach((el: any) => {
+        const options:any = []
+        if (subs) {
+            subs.forEach((el: any) => {
                 options.push({ value: el._id, label: el.name })
             })
         }
@@ -40,6 +40,9 @@ const ProductUpdateForm = ({
                 options.push({ value: el._id, label: el.name })
             })
         } 
+       
+        console.log(options);
+        
         return options;
     }
 
@@ -135,7 +138,7 @@ const ProductUpdateForm = ({
                     name="category"
                     className="form-control"
                     onChange={handleCatagoryChange}
-                    value={category}
+                    value={category._id}
                 >
                     <option>Please select</option>
                     {categoryList.length > 0 &&
@@ -147,15 +150,16 @@ const ProductUpdateForm = ({
                 </select>
             </div>
 
-            {subOptions && subOptions.length > 1 && (
+            {subs && subs.length > 0 && (
 
                 <div>
 
                     <Select
-                     defaultValue={[...subCategoryDefaultValues()]} 
+                     value={[...getSubs()]} 
                      onChange={(value) => handleSubCategoryChange(value)}
                       options={getSubs()} 
                       isMulti
+                      name="subs"
                       ></Select>
 
                 </div>

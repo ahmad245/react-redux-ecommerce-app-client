@@ -8,7 +8,7 @@ const ProductShow=(props:any)=>{
   
     useEffect(()=>{
         getProductBySlug(props.match.params.slug)
-    })
+    },[])
     const renderProduct=()=>{
         const product=productReducer.data[props.match.params.id]
         if(product._id){

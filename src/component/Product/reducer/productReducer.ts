@@ -29,6 +29,7 @@ export interface RepositoryState {
             images?: any[];
             color?: COLOR;
             brand?: BRANDS;
+            slug:string;
         }
 
     };
@@ -49,6 +50,7 @@ const INITIALSTATE:RepositoryState={
             brand:BRANDS.ASUS,
             quantity:0,
             images:[],
+            slug:''
         
             
             

@@ -15,7 +15,7 @@ export interface IProduct{
 }
 
 export const  getAll=async()=>{
-   return await axios.get(`${process.env.REACT_APP_API}/products`);
+   return await axios.get(`${process.env.REACT_APP_API}/products/${100}`);
 }
 
 export const getBySlug=async(slug:string)=>{
