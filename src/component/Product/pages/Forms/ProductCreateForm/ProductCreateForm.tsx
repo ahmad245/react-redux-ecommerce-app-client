@@ -40,10 +40,11 @@ const ProductCreateForm=({
         if(event.target.files[0]) {
             fileInput = true
         }
-        if(fileInput) {
+        for (let i = 0; i < event.target.files.length; i++) {
+          if(event.target.files[i]) {
             try {
                 Resizer.imageFileResizer(
-                event.target.files[0],
+                event.target.files[i],
                 300,
                 300,
                 'JPEG',
@@ -51,7 +52,7 @@ const ProductCreateForm=({
                 0,
                 uri => {
                     console.log(uri)
-                    setNewImage( uri )
+                    setNewImage( [...newImage,{uri:uri}] )
                 },
                 'base64',
                 200,
@@ -61,12 +62,18 @@ const ProductCreateForm=({
                     console.log(err)
             }
         }
+          
+        }
+      
       }
       return (
         <form onSubmit={handleSubmit}>
 
                  <input type="file" onChange={fileChangedHandler}/>
-                <img src={newImage} alt=''/>
+                 {newImage.length && newImage.map((el:any)=>{
+                    return   <img src={el.uri} alt=''/>
+                 })}
+               
 
           <div className="form-group">
             <label>Title</label>

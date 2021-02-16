@@ -1,5 +1,6 @@
 import axios from "axios";
 
+import qs from 'qs'
 export interface IProduct{
     _id?:string;
     title: string;
@@ -47,3 +48,19 @@ export const create=async(product:IProduct,authtoken:string)=>{
     }
  })
 }
+
+
+export const productsFilter=async(params:any)=>{
+  return axios.get(`${process.env.REACT_APP_API}/productList`,{
+      params:{...params},
+      paramsSerializer: (params) => {
+        return qs.stringify(params, { arrayFormat: 'repeat' })
+      },
+     
+  })
+}
+
+// params: {
+//     city: cityParams,
+//     age: ageParams
+//   },

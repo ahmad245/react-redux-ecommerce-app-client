@@ -42,7 +42,7 @@ const ProductCreate=()=>{
     const [showSub, setShowSub] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const [newImage,setNewImage]=useState('')
+    const [newImage,setNewImage]=useState([{uri:''}])
 
     const { getAllCategory } = useActionsCategory();
     const { categoryReducer ,authReducer} = useTypedSelector(state => state);

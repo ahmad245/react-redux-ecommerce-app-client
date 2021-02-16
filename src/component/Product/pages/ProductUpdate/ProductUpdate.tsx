@@ -38,6 +38,11 @@ const ProductUpdate = (props: any) => {
         getProductBySlug(props.match.params.slug)
     }, [])
 
+    useEffect(()=>{
+        getAllBySubCategory(values.category._id).then(({data})=>{
+            setSubOptions(data);})
+    },[])
+
     const initailValue = () => {
         const product = productReducer.data[props.match.params.id]
         if (product) {
@@ -60,6 +65,9 @@ const ProductUpdate = (props: any) => {
     }
     const handleCatagoryChange = (e: any) => {
         getAllBySubCategory(e.target.value).then(({data})=>{
+
+            
+
             setSubOptions(data);
             const tempState={...values};
             tempState.category={
@@ -68,6 +76,16 @@ const ProductUpdate = (props: any) => {
                 name:categoryReducer.data[e.target.value].name,
                 slug:categoryReducer.data[e.target.value].slug,
             };
+            //set value of subCategory if change category
+            const product = productReducer.data[props.match.params.id]
+            if(product.category._id !== e.target.value){
+                let tempStateSub=[...tempState.subs];
+                tempStateSub=[{_id:'',name:'',parent:'',slug:''}]
+                tempState.subs=tempStateSub
+            }else{
+                tempState.subs=[...tempState.subs,...product.subs]
+            }
+            //end
             setValues(tempState);
         })
     }

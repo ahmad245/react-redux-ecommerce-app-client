@@ -24,8 +24,8 @@ const ProductUpdateForm = ({
 
     const getSubs = () => {
         const options:any = []
-        if (subs) {
-            subs.forEach((el: any) => {
+        if (subOptions) {
+            subOptions.forEach((el: any) => {
                 options.push({ value: el._id, label: el.name })
             })
         }
@@ -150,12 +150,11 @@ const ProductUpdateForm = ({
                 </select>
             </div>
 
-            {subs && subs.length > 0 && (
-
+            {subOptions && subOptions.length > 0 && (
                 <div>
 
                     <Select
-                     value={[...getSubs()]} 
+                     value={[...subCategoryDefaultValues()]} 
                      onChange={(value) => handleSubCategoryChange(value)}
                       options={getSubs()} 
                       isMulti
