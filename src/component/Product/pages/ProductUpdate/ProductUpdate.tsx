@@ -51,6 +51,8 @@ const ProductUpdate = (props: any) => {
         }
 
     }
+    console.log(values.subs);
+    
     const handleSubmit = (e: any) => {
         e.preventDefault()
         const temp = { ...values };
@@ -86,12 +88,12 @@ const ProductUpdate = (props: any) => {
                         tempStateSub=[{_id:'',name:'',parent:'',slug:''}]
                         tempState.subs=tempStateSub
                         
-                        console.log('changes');
+                        
                         
                         
                     }else{
                         tempState.subs=[...tempState.subs,...product.subs]
-                        console.log('not change');
+                        
                         
                     }
                     //end
@@ -103,7 +105,7 @@ const ProductUpdate = (props: any) => {
             
        
     }
-    console.log('out',values.subs);
+   
     const handleSubCategoryChange = (e: any) => {
         // const tempSate={...values};
         // const subs:SubCategory[]=e.map((el:any):SubCategory=>{
