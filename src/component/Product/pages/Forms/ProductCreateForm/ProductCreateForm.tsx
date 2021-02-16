@@ -173,7 +173,7 @@ const ProductCreateForm=({
             </select>
           </div>
     
-          {subOptions && subOptions.length > 1 && (
+          {subOptions && subOptions.length > 0 && (
               
             <div>
 

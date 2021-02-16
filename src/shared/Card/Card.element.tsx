@@ -3,10 +3,10 @@ import styled from "styled-components"
 
 
 export const CardStyledContainer = styled.div`
-  border: ${(props) => `1px solid ${props.theme.border.cool}`};
+  border: ${(props) => `1px solid red`};
   padding: 25px 12px 18px;
   background: ${(props) => `linear-gradient(
-    45deg, ${props.theme.primary.main}, ${props.theme.secondary.main}
+    45deg, red, blue
   )`};
 `
 
@@ -66,7 +66,7 @@ export const CardAction = styled(Link)`
     opacity: 0.8;
   }
   :active {
-    background: ${(props) => props.theme.primary.main};
+    
   }
 `
 
@@ -74,5 +74,5 @@ export const CardStyledPhoto = styled.img`
 width: 100%;
 height: 100%;
 object-fit: cover;
-border: ${(props) => `1px solid ${props.theme.border.cool}`};
+border: ${(props) => `1px solid red`};
 `

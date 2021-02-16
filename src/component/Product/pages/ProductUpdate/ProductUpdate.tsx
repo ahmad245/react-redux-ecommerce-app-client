@@ -41,7 +41,7 @@ const ProductUpdate = (props: any) => {
     useEffect(()=>{
         getAllBySubCategory(values.category._id).then(({data})=>{
             setSubOptions(data);})
-    },[])
+    },[values.category._id])
 
     const initailValue = () => {
         const product = productReducer.data[props.match.params.id]
@@ -60,42 +60,50 @@ const ProductUpdate = (props: any) => {
 
             }, props.match.params.slug, authReducer.token)
     }
+    
     const handleChange = (e: any) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     }
     const handleCatagoryChange = (e: any) => {
-        getAllBySubCategory(e.target.value).then(({data})=>{
-
+        console.log(e.target.value);
+             const tempState={...values};
+            console.log(e.target.value);
+            let tempStateCategory={...tempState.category};
             
-
-            setSubOptions(data);
-            const tempState={...values};
-            tempState.category={
-                ...tempState.category,
-                _id:e.target.value,
-                name:categoryReducer.data[e.target.value].name,
-                slug:categoryReducer.data[e.target.value].slug,
-            };
-            //set value of subCategory if change category
-            const product = productReducer.data[props.match.params.id]
-            if(product.category._id !== e.target.value){
-                let tempStateSub=[...tempState.subs];
-                tempStateSub=[{_id:'',name:'',parent:'',slug:''}]
-                tempState.subs=tempStateSub
-            }else{
-                tempState.subs=[...tempState.subs,...product.subs]
-            }
-            //end
-            setValues(tempState);
-        })
+                
+            tempStateCategory._id=categoryReducer.data[e.target.value]._id;
+                tempStateCategory.name=categoryReducer.data[e.target.value].name;
+                tempStateCategory.slug=categoryReducer.data[e.target.value].slug;
+            
+            tempState.category=tempStateCategory;
+            setValues((values)=>{
+                getAllBySubCategory(e.target.value).then(({data})=>{
+                    const tempState={...values};
+                    //set value of subCategory if change category
+                    const product = productReducer.data[props.match.params.id]
+                    if(product.category._id !== e.target.value){
+                        let tempStateSub=[...tempState.subs];
+                        tempStateSub=[{_id:'',name:'',parent:'',slug:''}]
+                        tempState.subs=tempStateSub
+                    }else{
+                        tempState.subs=[...tempState.subs,...product.subs]
+                    }
+                    //end
+                    setSubOptions(data);
+                   // setValues(tempState);
+                })
+                return tempState
+            });
+        
+       
     }
     const handleSubCategoryChange = (e: any) => {
-        const tempSate={...values};
-        const subs:SubCategory[]=e.map((el:any):SubCategory=>{
-           return {_id:el.value,name:el.label,parent:tempSate.subs[0].parent}
-        })
-        tempSate.subs=subs;
-        setValues(tempSate);
+        // const tempSate={...values};
+        // const subs:SubCategory[]=e.map((el:any):SubCategory=>{
+        //    return {_id:el.value,name:el.label,parent:tempSate.subs[0].parent}
+        // })
+        // tempSate.subs=subs;
+        // setValues(tempSate);
     }
     return (
         <div>

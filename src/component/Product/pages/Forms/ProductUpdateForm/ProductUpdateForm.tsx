@@ -40,8 +40,6 @@ const ProductUpdateForm = ({
                 options.push({ value: el._id, label: el.name })
             })
         } 
-       
-        console.log(options);
         
         return options;
     }

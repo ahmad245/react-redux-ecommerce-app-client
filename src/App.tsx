@@ -18,6 +18,7 @@ import { useActions } from './hooks/useActions';
 import AdminRoute from './shared/RedirectToRoute/AdminRoute';
 import { Dashboard } from './component/Admin/pages';
 import { AdminHistory } from './component/Admin/pages/History';
+import { Products } from './component/User/pages/Products/pages/ProductList';
 
 function App() {
   const {authChange} =useActions();
@@ -37,6 +38,7 @@ function App() {
       <Route path="/login" exact component={Login} />
       <Route path="/logout" exact component={Logout} />
       <Route path="/forgotPassword" exact component={ForgotPassord} />
+      <Route path="/user/products" exact component={Products} />
    
       <AuthRoute path="/user/history" exact component={History} />
      

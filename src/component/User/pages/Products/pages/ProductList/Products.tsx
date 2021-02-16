@@ -74,7 +74,7 @@ const Products = () => {
         <Container>
             <Row>
                 <Col xl={4}>
-                    <Filter />
+                    {/* <Filter /> */}
                 </Col>
                 <Col xl={8}>
                 {renderProductList()}
