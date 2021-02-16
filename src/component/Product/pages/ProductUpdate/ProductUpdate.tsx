@@ -65,7 +65,7 @@ const ProductUpdate = (props: any) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     }
     const handleCatagoryChange = (e: any) => {
-        console.log(e.target.value);
+           let targetValue=e.target.value;
              const tempState={...values};
             console.log(e.target.value);
             let tempStateCategory={...tempState.category};
@@ -76,27 +76,34 @@ const ProductUpdate = (props: any) => {
                 tempStateCategory.slug=categoryReducer.data[e.target.value].slug;
             
             tempState.category=tempStateCategory;
-            setValues((values)=>{
-                getAllBySubCategory(e.target.value).then(({data})=>{
-                    const tempState={...values};
+           
+                getAllBySubCategory(targetValue).then(({data})=>{
+                   
                     //set value of subCategory if change category
                     const product = productReducer.data[props.match.params.id]
-                    if(product.category._id !== e.target.value){
+                    if(product.category._id !== targetValue){
                         let tempStateSub=[...tempState.subs];
                         tempStateSub=[{_id:'',name:'',parent:'',slug:''}]
                         tempState.subs=tempStateSub
+                        
+                        console.log('changes');
+                        
+                        
                     }else{
                         tempState.subs=[...tempState.subs,...product.subs]
+                        console.log('not change');
+                        
                     }
                     //end
                     setSubOptions(data);
-                   // setValues(tempState);
+                    setValues((value)=>tempState);
                 })
-                return tempState
-            });
-        
+               // return tempState
+           
+            
        
     }
+    console.log('out',values.subs);
     const handleSubCategoryChange = (e: any) => {
         // const tempSate={...values};
         // const subs:SubCategory[]=e.map((el:any):SubCategory=>{
