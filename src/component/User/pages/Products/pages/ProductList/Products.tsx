@@ -5,6 +5,7 @@ import { useActionsProduct, useTypedSelector } from '../../../../../../hooks';
 import { Card } from '../../../../../../shared/Card';
 import { Filter } from '../../../../../Filter';
 import ReactPaginate from 'react-paginate';
+import { Pagination } from '.';
 
 // interface Comment{
 //     name:string;
@@ -88,6 +89,7 @@ const Products = () => {
             </Row>
             <Row>
                 <Col xl={12}>
+                    <Pagination>
                     <ReactPaginate 
                         previousLabel={'previous'}
                         nextLabel={'next'}
@@ -101,7 +103,9 @@ const Products = () => {
                         containerClassName={'pagination'}
                         //   subContainerClassName={'pages pagination'}
                         activeClassName={'active'}
+
                     />
+                    </Pagination>
                 </Col>
 
             </Row>
