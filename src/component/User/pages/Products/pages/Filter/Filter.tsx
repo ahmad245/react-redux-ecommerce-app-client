@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-awesome-styled-grid';
-import Select from 'react-select/src/Select';
+import Select from 'react-select'
 import { brands, colors } from '../../../../../../définitions';
 import { useActionsCategory, useActionsSubCategory, useTypedSelector } from '../../../../../../hooks';
 import { Input } from '../../../../../../shared/Input';

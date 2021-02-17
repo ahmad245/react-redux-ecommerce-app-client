@@ -1,8 +1,8 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import {  ProductUpdateForm } from '../Forms'
-import { useActionsCategory, useTypedSelector, useActionsProduct } from '../../../../hooks';
-import { getAllBySubCategory } from '../../../../apis/category';
+import { useActionsCategory, useTypedSelector, useActionsProduct, useActionsSubCategory } from '../../../../hooks';
+import { getSubCategoryByCategory } from '../../../../apis/category';
 import { BRANDS, COLOR, ProductCategorySubs, SHIPPING } from '../../actions';
 import { SubCategory } from '../../../SubCategory/actions';
 const INITIALSTATE: ProductCategorySubs = {
@@ -26,9 +26,10 @@ const ProductUpdate = (props: any) => {
    
 
     const { getAllCategory } = useActionsCategory();
-    const { categoryReducer, authReducer, productReducer } = useTypedSelector(state => state);
+    const { categoryReducer, authReducer, productReducer,subCategoryReducer } = useTypedSelector(state => state);
 
     const { updateProduct, getProductBySlug } = useActionsProduct()
+    const {getSubsByCategory} =useActionsSubCategory()
     const colors = ["Black", "Brown", "Silver", "White", "Blue"];
     const brands = ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"];
 
@@ -39,8 +40,11 @@ const ProductUpdate = (props: any) => {
     }, [])
 
     useEffect(()=>{
-        getAllBySubCategory(values.category._id).then(({data})=>{
-            setSubOptions(data);})
+        getSubsByCategory(productReducer.data[props.match.params.id].category._id)
+        setSubOptions(Object.values(subCategoryReducer.data))
+        // getSubCategoryByCategory(values.category._id).then(({data})=>{
+        //     setSubOptions(data);
+        // })
     },[values.category._id])
 
     const initailValue = () => {
@@ -51,6 +55,8 @@ const ProductUpdate = (props: any) => {
         }
 
     }
+    const memoInitialValue=useCallback(initailValue,[])
+   
     console.log(values.subs);
     
     const handleSubmit = (e: any) => {
@@ -79,7 +85,7 @@ const ProductUpdate = (props: any) => {
             
             tempState.category=tempStateCategory;
            
-                getAllBySubCategory(targetValue).then(({data})=>{
+                getSubCategoryByCategory(targetValue).then(({data})=>{
                    
                     //set value of subCategory if change category
                     const product = productReducer.data[props.match.params.id]
@@ -87,9 +93,6 @@ const ProductUpdate = (props: any) => {
                         let tempStateSub=[...tempState.subs];
                         tempStateSub=[{_id:'',name:'',parent:'',slug:''}]
                         tempState.subs=tempStateSub
-                        
-                        
-                        
                         
                     }else{
                         tempState.subs=[...tempState.subs,...product.subs]
@@ -117,7 +120,7 @@ const ProductUpdate = (props: any) => {
     return (
         <div>
             <ProductUpdateForm
-                initailValue={initailValue}
+                initailValue={memoInitialValue}
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
                 setValues={setValues}

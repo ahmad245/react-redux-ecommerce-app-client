@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ProductCreateForm } from '../Forms'
 import { useActionsCategory, useTypedSelector, useActionsProduct } from '../../../../hooks';
-import { getAllBySubCategory } from '../../../../apis/category';
+import { getSubCategoryByCategory } from '../../../../apis/category';
 const initialState = {
     title: "Macbook Pro",
     description: "This is the best Apple product",
@@ -66,7 +66,7 @@ const ProductCreate=()=>{
         authReducer.token)
       }
       const handleCatagoryChange=(e:any)=>{
-        getAllBySubCategory(e.target.value).then(({data})=>{
+        getSubCategoryByCategory(e.target.value).then(({data})=>{
             setSubOptions(data);
             const tempState={...values};
             tempState.category=e.target.value;

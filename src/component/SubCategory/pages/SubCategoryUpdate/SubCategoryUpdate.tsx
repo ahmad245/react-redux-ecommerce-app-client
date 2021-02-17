@@ -20,11 +20,13 @@ const  SubCategoryUpdate=(props:any)=>{
        props.history.push('/admin/dashboard/subCategory/create')
     }
 
+   
     const initialValue=()=>{
         if(subCategoryReducer.data && props.match.params.slug){    
          return   _.pick(subCategoryReducer.data[props.match.params.id],'name','parent')
         }
     }
+ 
     const renderForm=()=>{
         if(subCategoryReducer.data[props.match.params.id]){
             return (<SubCategoryForm onSubmit={onSubmit} initialValue={initialValue()}/> )

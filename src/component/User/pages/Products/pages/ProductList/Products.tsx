@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-awesome-styled-grid';
-import {  FaPlusCircle, FaRegEye } from 'react-icons/fa';
+import { FaPlusCircle, FaRegEye } from 'react-icons/fa';
 import { useActionsProduct, useTypedSelector } from '../../../../../../hooks';
 import { Card } from '../../../../../../shared/Card';
 import { Filter } from '../Filter';
@@ -17,7 +17,7 @@ import ReactPaginate from 'react-paginate';
 const Products = () => {
     const { productReducer } = useTypedSelector(state => state);
     const { getAllProduct } = useActionsProduct();
-    const [pageState, setPageState] = React.useState( null)
+    const [pageState, setPageState] = React.useState(null)
 
     useEffect(() => {
         getAllProduct()
@@ -59,45 +59,48 @@ const Products = () => {
     }
 
     const handlePageClick = (data: any) => {
-    //     let selected = data.selected;
-    //     let offset = Math.ceil(selected * props.perPage);
-    //     let oldState={...pageState};
-    //     let result=getData(offset);
-    //     oldState.data=result.data;
-    //     oldState.offset=offset;
-    //   let  pageCount= Math.ceil(result.meta.total_count / 2);
-    //   oldState.pageCount=pageCount;
-    //     setPageState(oldState);
+        //     let selected = data.selected;
+        //     let offset = Math.ceil(selected * props.perPage);
+        //     let oldState={...pageState};
+        //     let result=getData(offset);
+        //     oldState.data=result.data;
+        //     oldState.offset=offset;
+        //   let  pageCount= Math.ceil(result.meta.total_count / 2);
+        //   oldState.pageCount=pageCount;
+        //     setPageState(oldState);
     };
 
     return (
         <Container>
             <Row>
                 <Col xl={4}>
-                    {/* <Filter /> */}
+                    <Filter />
                 </Col>
-                <Col xl={8}>
-                {renderProductList()}
+                <Col xl={8} >
+                    {renderProductList()}
                 </Col>
-         
+
             </Row>
             <Row>
-            <ReactPaginate
-                previousLabel={'previous'}
-                nextLabel={'next'}
-                breakLabel={'...'}
-                breakClassName={'break-me'}
-                //  pageCount={pageState.pageCount}
-                 pageCount={5}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-                onPageChange={handlePageClick}
-                containerClassName={'pagination'}
-                //   subContainerClassName={'pages pagination'}
-                activeClassName={'active'}
-            />
+                <Col xl={12}>
+                    <ReactPaginate
+                        previousLabel={'previous'}
+                        nextLabel={'next'}
+                        breakLabel={'...'}
+                        breakClassName={'break-me'}
+                        //  pageCount={pageState.pageCount}
+                        pageCount={5}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={handlePageClick}
+                        containerClassName={'pagination'}
+                        //   subContainerClassName={'pages pagination'}
+                        activeClassName={'active'}
+                    />
+                </Col>
+
             </Row>
-          </Container>
+        </Container>
     )
 
 

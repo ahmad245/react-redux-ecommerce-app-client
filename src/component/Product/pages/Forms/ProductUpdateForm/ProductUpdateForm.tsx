@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Select from 'react-select'
 const ProductUpdateForm = ({
- brands,colors,   initailValue,  handleSubCategoryChange, categoryList, handleSubmit, handleChange, setValues, values , handleCatagoryChange, subOptions, showSub, }: any) => {
+ brands,colors,   memoInitialValue,  handleSubCategoryChange, categoryList, handleSubmit, handleChange, setValues, values , handleCatagoryChange, subOptions, showSub, }: any) => {
 
     const {
         title,
@@ -19,10 +19,10 @@ const ProductUpdateForm = ({
 
 
         useEffect(()=>{
-            initailValue()
-        },[])
+            memoInitialValue()
+        },[memoInitialValue])
 
-    const getSubs = () => {
+    const getSubsOptions = () => {
         const options:any = []
         if (subOptions) {
             subOptions.forEach((el: any) => {
@@ -154,7 +154,7 @@ const ProductUpdateForm = ({
                     <Select
                      value={[...subCategoryDefaultValues()]} 
                      onChange={(value) => handleSubCategoryChange(value)}
-                      options={getSubs()} 
+                      options={getSubsOptions()} 
                       isMulti
                       name="subs"
                       ></Select>

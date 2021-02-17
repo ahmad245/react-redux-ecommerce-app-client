@@ -3,6 +3,7 @@ import { Dispatch } from "redux";
 import { ActionSubCategory } from "../action-types";
 import { ActionSubCategoryType } from "../actions";
 import { create,update,getAll,getBySlug,remove, SubCategory } from "../../../apis/subCategory";
+import { getSubCategoryByCategory } from "../../../apis/category";
 
 export const createSubCategory=(sub:SubCategory,token:string)=>async(dispatch:Dispatch<ActionSubCategory>)=>{
 
@@ -53,6 +54,19 @@ export const getSubCategoryBySlug=(slug:string)=>async(dispatch:Dispatch<ActionS
     try {
         const {data}=await getBySlug(slug)
         dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY_GETBYID,payload:data})
+    } catch (error) {
+        dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY_ERROR,payload:error.message})
+  
+    }
+}
+
+
+
+export const getSubsByCategory=(category:string)=>async(dispatch:Dispatch<ActionSubCategory>)=>{
+    dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY});
+    try {
+        const {data}=await getSubCategoryByCategory(category)
+        dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY_GETBYCATEGORY,payload:data})
     } catch (error) {
         dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY_ERROR,payload:error.message})
   

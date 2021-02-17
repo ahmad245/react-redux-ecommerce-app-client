@@ -42,6 +42,11 @@ export interface SubCategoryRepositoryErrorAction{
 }
 
 
+export interface SubCategoryRepositoryGetByCategoryAction{
+    type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY_GETBYCATEGORY;
+    payload:SubCategory[]
+}
+
 
 export enum ActionSubCategoryType{
     SUBCATEGORY_REPOSITORY='sub_category_repository',
@@ -52,6 +57,8 @@ export enum ActionSubCategoryType{
     SUBCATEGORY_REPOSITORY_GETBYID='sub_category_repository_getByID',
     SUBCATEGORY_REPOSITORY_CREATE='sub_category_repository_create',
     SUBCATEGORY_REPOSITORY_UPDATE='category_repository_update',
-    SUBCATEGORY_REPOSITORY_DELETE='sub_category_repository_delete'
+    SUBCATEGORY_REPOSITORY_DELETE='sub_category_repository_delete',
+
+    SUBCATEGORY_REPOSITORY_GETBYCATEGORY='sub_category_repository_getByCategory',
 
 }

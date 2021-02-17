@@ -1,4 +1,4 @@
-import { SubCategoryRepositoryAction, SubCategoryRepositoryCreateAction, SubCategoryRepositoryDeleteAction, SubCategoryRepositoryErrorAction, SubCategoryRepositoryGetAllAction, SubCategoryRepositoryGetByIdAction, SubCategoryRepositoryUpdateAction } from "../actions";
+import { SubCategoryRepositoryAction, SubCategoryRepositoryCreateAction, SubCategoryRepositoryDeleteAction, SubCategoryRepositoryErrorAction, SubCategoryRepositoryGetAllAction, SubCategoryRepositoryGetByCategoryAction, SubCategoryRepositoryGetByIdAction, SubCategoryRepositoryUpdateAction } from "../actions";
 
 export type ActionSubCategory=
 |SubCategoryRepositoryAction
@@ -8,4 +8,5 @@ export type ActionSubCategory=
 |SubCategoryRepositoryGetAllAction
 |SubCategoryRepositoryGetByIdAction
 |SubCategoryRepositoryErrorAction
+|SubCategoryRepositoryGetByCategoryAction
 
