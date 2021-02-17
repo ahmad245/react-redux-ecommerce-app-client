@@ -63,9 +63,12 @@ export const getSubCategoryBySlug=(slug:string)=>async(dispatch:Dispatch<ActionS
 
 
 export const getSubsByCategory=(category:string)=>async(dispatch:Dispatch<ActionSubCategory>)=>{
+    
     dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY});
     try {
         const {data}=await getSubCategoryByCategory(category)
+        
+        
         dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY_GETBYCATEGORY,payload:data})
     } catch (error) {
         dispatch({type:ActionSubCategoryType.SUBCATEGORY_REPOSITORY_ERROR,payload:error.message})

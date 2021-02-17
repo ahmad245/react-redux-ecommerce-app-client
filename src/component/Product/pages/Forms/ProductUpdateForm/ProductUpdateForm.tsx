@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Select from 'react-select'
 const ProductUpdateForm = ({
- brands,colors,   memoInitialValue,  handleSubCategoryChange, categoryList, handleSubmit, handleChange, setValues, values , handleCatagoryChange, subOptions, showSub, }: any) => {
+ brands,colors,   initailValue,  handleSubCategoryChange, categoryList, handleSubmit, handleChange, setValues, values , handleCatagoryChange, subOptions, showSub, }: any) => {
 
     const {
         title,
@@ -19,8 +19,8 @@ const ProductUpdateForm = ({
 
 
         useEffect(()=>{
-            memoInitialValue()
-        },[memoInitialValue])
+            initailValue()
+        },[initailValue])
 
     const getSubsOptions = () => {
         const options:any = []

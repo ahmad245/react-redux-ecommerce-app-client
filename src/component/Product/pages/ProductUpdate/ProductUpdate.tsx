@@ -5,6 +5,7 @@ import { useActionsCategory, useTypedSelector, useActionsProduct, useActionsSubC
 import { getSubCategoryByCategory } from '../../../../apis/category';
 import { BRANDS, COLOR, ProductCategorySubs, SHIPPING } from '../../actions';
 import { SubCategory } from '../../../SubCategory/actions';
+import { useDispatch } from 'react-redux';
 const INITIALSTATE: ProductCategorySubs = {
     _id: '',
     title: '',
@@ -33,40 +34,48 @@ const ProductUpdate = (props: any) => {
     const colors = ["Black", "Brown", "Silver", "White", "Blue"];
     const brands = ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"];
 
-
+     // const dispatch = useDispatch()
     useEffect(() => {
         getAllCategory()
         getProductBySlug(props.match.params.slug)
     }, [])
 
     useEffect(()=>{
-        getSubsByCategory(productReducer.data[props.match.params.id].category._id)
+        console.log(values.category.name,values.category._id);
+        getSubsByCategory(values.category._id)
+      
+       console.log( 'use Effect', Object.values(subCategoryReducer.data));
+        
+        
+        
         setSubOptions(Object.values(subCategoryReducer.data))
         // getSubCategoryByCategory(values.category._id).then(({data})=>{
         //     setSubOptions(data);
         // })
     },[values.category._id])
-
+    console.log( 'use Effect', Object.values(subCategoryReducer.data));
     const initailValue = () => {
         const product = productReducer.data[props.match.params.id]
         if (product) {
-
+           
             setValues({ ...values, ...product })
         }
 
     }
     const memoInitialValue=useCallback(initailValue,[])
    
-    console.log(values.subs);
+  //  console.log(values.subs);
     
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        const temp = { ...values };
-        updateProduct(
-            {
-                ...values, category: temp.category._id, subs: temp.subs.map((el) => el._id)
+        // const temp = { ...values };
+        // updateProduct(
+        //     {
+        //         ...values, category: temp.category._id, subs: temp.subs.map((el) => el._id)
 
-            }, props.match.params.slug, authReducer.token)
+        //     }, props.match.params.slug, authReducer.token)
+        console.log(values.subs);
+        
     }
     
     const handleChange = (e: any) => {
@@ -110,12 +119,12 @@ const ProductUpdate = (props: any) => {
     }
    
     const handleSubCategoryChange = (e: any) => {
-        // const tempSate={...values};
-        // const subs:SubCategory[]=e.map((el:any):SubCategory=>{
-        //    return {_id:el.value,name:el.label,parent:tempSate.subs[0].parent}
-        // })
-        // tempSate.subs=subs;
-        // setValues(tempSate);
+        const tempSate={...values};
+        const subs:SubCategory[]=e.map((el:any):SubCategory=>{
+           return {_id:el.value,name:el.label,parent:tempSate.subs[0].parent}
+        })
+        tempSate.subs=subs;
+        setValues(tempSate);
     }
     return (
         <div>
@@ -126,7 +135,7 @@ const ProductUpdate = (props: any) => {
                 setValues={setValues}
                 values={values}
                 handleCatagoryChange={handleCatagoryChange}
-                subOptions={subOptions}
+                subOptions={Object.values(subCategoryReducer.data)}
                 showSub={showSub}
                 categoryList={Object.values(categoryReducer.data)}
                 handleSubCategoryChange={handleSubCategoryChange}
