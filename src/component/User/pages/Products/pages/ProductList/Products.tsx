@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-awesome-styled-grid';
 import { FaPlusCircle, FaRegEye } from 'react-icons/fa';
 import { useActionsProduct, useTypedSelector } from '../../../../../../hooks';
 import { Card } from '../../../../../../shared/Card';
-import { Filter } from '../Filter';
+import { Filter } from '../../../../../Filter';
 import ReactPaginate from 'react-paginate';
 
 // interface Comment{
@@ -46,7 +46,9 @@ const Products = () => {
     }
     const renderProductList = () => {
         const productList = Object.values(productReducer.data);
-        if (productList.length > 0) {
+        console.log(productList);
+        
+        if (productList.length > 0 && productList[0]._id !='') {
             return productList.map((el) => {
                 let url1 = `/user/products/view/${el._id}/${el.slug}`;
                 let url2 = `/admin/products/add/${el._id}/${el.slug}`;
@@ -73,17 +75,20 @@ const Products = () => {
     return (
         <Container>
             <Row>
-                <Col xl={4}>
+                {/* <Col xl={4}>
                     <Filter />
-                </Col>
-                <Col xl={8} >
+                </Col> */}
+                <Col xl={12} >
+                    <Row>
                     {renderProductList()}
+                    </Row>
+                   
                 </Col>
 
             </Row>
             <Row>
                 <Col xl={12}>
-                    <ReactPaginate
+                    <ReactPaginate 
                         previousLabel={'previous'}
                         nextLabel={'next'}
                         breakLabel={'...'}

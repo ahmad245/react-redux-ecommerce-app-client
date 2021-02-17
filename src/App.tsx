@@ -19,6 +19,7 @@ import AdminRoute from './shared/RedirectToRoute/AdminRoute';
 import { Dashboard } from './component/Admin/pages';
 import { AdminHistory } from './component/Admin/pages/History';
 import { Products } from './component/User/pages/Products/pages/ProductList';
+import { Home } from './component/Home';
 
 function App() {
   const {authChange} =useActions();
@@ -33,6 +34,7 @@ function App() {
       <ToastContainer/>
       <Navbar />
       <Switch>
+      <Route path="/" exact component={Home} />
       <Route path="/register" exact component={Register} />
       <Route path="/register/complete" exact component={RegisterComplete} />
       <Route path="/login" exact component={Login} />
