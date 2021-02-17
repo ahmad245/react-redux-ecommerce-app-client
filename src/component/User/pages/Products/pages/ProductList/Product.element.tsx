@@ -17,7 +17,8 @@ export const Pagination=styled.div`
     min-height: 2.85714286em;
     vertical-align: middle;
 }
-&>.pagination li{
+&>.pagination a{
+    cursor: pointer;
     display:flex;
     position: relative;
     vertical-align: middle;
